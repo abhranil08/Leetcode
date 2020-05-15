@@ -16,7 +16,7 @@
 class Parent {
     int x;
 }
-class Solution {
+class cousinsBinaryTree {
     public void parent(TreeNode root,int x,Parent obj)
     {
         if(root==null)
