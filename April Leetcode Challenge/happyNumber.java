@@ -1,4 +1,5 @@
 class happyNumber {
+    // sum of square of digits
     public int sum(int n)
     {
         int s=0;
