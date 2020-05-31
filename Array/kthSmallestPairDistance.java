@@ -35,8 +35,7 @@ class kthSmallestPairDistance {
         {
             if((nums[i+1]-nums[i])<low)
                 low=nums[i+1]-nums[i];
-        }
-        
+        }        
         int mid=0;
         while(low<high)
         {
