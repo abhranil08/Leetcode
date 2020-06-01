@@ -34,6 +34,7 @@ class minIndexSumOfTwoLists {
         for(String s: list1)
             h.put(s,i++);
         i=0;
+        
         List<String> ans=new ArrayList<>();
         for(String s: list2)
         {
