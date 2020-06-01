@@ -13,7 +13,7 @@ Output: 1
 
 */
 
-class Solution {
+class sumOfTwoNumber {
     public int getSum(int a, int b) {
         /*
         if(a>0)
