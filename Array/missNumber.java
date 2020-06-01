@@ -13,7 +13,7 @@ Output: 8
 Note:
 Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
 
-/*
+*/
 
 class missNumber {
     public int missingNumber(int[] nums) {
