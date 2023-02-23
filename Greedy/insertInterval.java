@@ -57,7 +57,7 @@ class Solution {
         return ans;
     }
     public int[][] insert(int[][] intervals, int[] newInterval) {
-        if( intervals.length == 0 )
+        /*if( intervals.length == 0 )
         {
             int ans[][] = new int[1][2];
             ans[0][0] = newInterval[0];
@@ -88,6 +88,45 @@ class Solution {
             ans[1] = newInterval[1];
             Intervals.add(ans);
         }
-        return merge(Intervals, newInterval );    
+        return merge(Intervals, newInterval );*/
+
+        ArrayList<int[]> FinalIntervals = new ArrayList<int[]>();
+        int i = 0;
+        while( i < intervals.length )
+        {
+            if( newInterval[0] > intervals[i][0])
+            {
+                FinalIntervals.add(intervals[i]);
+                i++;
+            }    
+            else
+                break;
+        }
+
+        if( FinalIntervals.size() == 0 || newInterval[0] > FinalIntervals.get(FinalIntervals.size()-1)[1] )
+            FinalIntervals.add( newInterval );
+        else
+        {
+            int[] lastInterval = FinalIntervals.get(FinalIntervals.size()-1);
+            lastInterval[1] = Math.max(lastInterval[1],newInterval[1]);
+        }
+
+        while( i < intervals.length )
+        {
+            int[] lastInterval = FinalIntervals.get(FinalIntervals.size()-1);
+            if( lastInterval[1] >= intervals[i][0] )
+                lastInterval[1] = Math.max(lastInterval[1],intervals[i][1]);  
+            else
+                FinalIntervals.add(intervals[i]);
+            i++;
+        }
+
+        int ans[][] = new int[FinalIntervals.size()][2];
+        for( i = 0; i < FinalIntervals.size();i++)
+        {
+            ans[i][0] = FinalIntervals.get(i)[0];
+            ans[i][1] = FinalIntervals.get(i)[1];
+        }
+        return ans;
     }
 }
