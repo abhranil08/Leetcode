@@ -2,7 +2,7 @@
 Solutions to a number of leetcode problems.
 
 # Languages used 🛠️
-- [Java] (https://www.java.com/en/)
+- [Java] ([https://www.java.com/en/])
 - [Python] (https://www.python.org/))
 
 # Some resources you can use for SDE preparations 📘
