@@ -13,29 +13,37 @@
  *     }
  * }
  */
+class Pair {
+    TreeNode node;
+    int pos;
+    public Pair(TreeNode node, int pos )
+    {
+        this.node=node;
+        this.pos=pos;
+    }
+}
 class Solution {
     public int widthOfBinaryTree(TreeNode root) {
-        Queue<TreeNode> q = new LinkedList<>();
-        int maxWidth = 0;
-        q.add(root);
-
+        Deque<Pair> q = new LinkedList<>();
+        int maxWidth = 1;
+        q.add(new Pair(root,0));
         while( !q.isEmpty() )
         {
             int size = q.size();
-            System.out.println("size " + size);                  
-            maxWidth = Math.max(size, maxWidth);
             for( int i = 0; i < size; i++ )
             {
-                TreeNode current = q.peek();
-                if( current != null )
-                {
-                    System.out.print(current.val + " ");
-                    q.add(current.left);
-                    q.add(current.right);
-                }
-                q.remove();
+                Pair currentPair = q.remove();
+                if(currentPair.node.left!=null)
+                    q.add(new Pair(currentPair.node.left, 2*currentPair.pos));
+                if(currentPair.node.right!=null)
+                    q.add(new Pair(currentPair.node.right, 2*currentPair.pos+1));
             }
-            System.out.println();
+            if(!q.isEmpty())
+            {
+                Pair first = q.getFirst();
+                Pair last = q.getLast();          
+                maxWidth = Math.max(last.pos - first.pos+1, maxWidth);
+            }
         }
         return maxWidth;
     }
